@@ -1,4 +1,76 @@
 <!-- That's right... it's completely empty. Scary! Don't worry - that's what boilerplate is for! You DID read the directions all the way through, right? -->
 <!-- Remember to start by typing a single exclamation point (!) and then hitting enter or selecting the first dropdown option.-->
 <!-- This will give you the basic, necessary skeletal elements of a webpage so you can begin coding to our specific requirements! -->
-<!-- Good luck! You've got this! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+</head>
+<body>
+
+<form id="myForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+    <fieldset>
+        <legend>Select your favorite fruits:</legend>
+        <input type="checkbox" id="apple" name="fruits" value="Apple">
+        <label for="apple">Apple</label>
+        <input type="checkbox" id="banana" name="fruits" value="Banana">
+        <label for="banana">Banana</label>
+        <input type="checkbox" id="orange" name="fruits" value="Orange">
+        <label for="orange">Orange</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Gender:</legend>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="Other">
+        <label for="other">Other</label>
+    </fieldset>
+
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+        <option value="">Please select a country</option>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        <option value="UK">UK</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("myForm").onsubmit = function(event) {
+        event.preventDefault(); // Prevent the form from submitting to a server.
+
+        // Fetch form values.
+        const username = document.getElementById("username").value;
+        const fruits = [...document.querySelectorAll('input[name="fruits"]:checked')].map(el => el.value);
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const country = document.getElementById("country").value;
+
+        // Display an alert with the form values.
+        alert(`Username: ${username}\nFruits: ${fruits.join(", ")}\nGender: ${gender}\nCountry: ${country}`);
+    };
+</script>
+
+</body>
+</html>
+
+<!-- Here's what happens in the provided code:
+
+Form Creation: The form is created with a text input for the username, checkboxes for selecting favorite fruits, radio buttons for selecting gender, a dropdown for selecting a country, and a submit button.
+
+Labels and Placeholders: Each input field has an associated label for better accessibility, and the username field includes a placeholder.
+
+Validation: HTML5 validation is used to ensure the username is filled out, a gender is selected, and a country is chosen from the dropdown before the form can be submitted.
+
+JavaScript Form Handling: The form submission is handled using JavaScript. The default form submission to a server is prevented with event.preventDefault(). When the form is submitted, JavaScript fetches the values from each field, compiles them into a string, and displays them in an alert.
+
+This setup provides a basic demonstration of form handling while ensuring user input is validated as per your requirements. -->
